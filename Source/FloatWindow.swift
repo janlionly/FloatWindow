@@ -191,11 +191,15 @@ open class FloatWindow: UIWindow {
                 }else {
                     frame.origin.x = ballViewMargin
                 }
-                if frame.origin.y > screenSize.height - ballWidth - safeAreaInsets.bottom {
-                    frame.origin.y = screenSize.height - ballWidth - safeAreaInsets.bottom
+                var safeInsets = UIEdgeInsets.zero
+                if #available(iOS 11.0, *) {
+                    safeInsets = safeAreaInsets
                 }
-                if frame.origin.y < safeAreaInsets.top {
-                    frame.origin.y = safeAreaInsets.top
+                if frame.origin.y > screenSize.height - ballWidth - safeInsets.bottom {
+                    frame.origin.y = screenSize.height - ballWidth - safeInsets.bottom
+                }
+                if frame.origin.y < safeInsets.top {
+                    frame.origin.y = safeInsets.top
                 }
                 self.hideCollectView(completion: nil)
                 UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {

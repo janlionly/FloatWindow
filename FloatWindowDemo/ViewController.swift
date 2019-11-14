@@ -32,7 +32,7 @@ class ViewController: UIViewController {
         nameLabel.textColor = .white
         nameLabel.textAlignment = .center
         nameLabel.font = UIFont.systemFont(ofSize: 10)
-        nameLabel.backgroundColor = UIColor.link.withAlphaComponent(0.5)
+        nameLabel.backgroundColor = UIColor.systemPink.withAlphaComponent(0.3)
         FloatWindow.shared.ballView.addSubview(nameLabel)
         FloatWindow.shared.ballView.clipsToBounds = true
         

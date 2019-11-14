@@ -5,6 +5,8 @@
 [![Platform](https://img.shields.io/cocoapods/p/FloatWindow.svg?style=flat)](https://github.com/janlionly/FloatWindow)
 ![Swift](https://img.shields.io/badge/%20in-swift%205.1-orange.svg)
 
+![FloatWindow demo image](https://media.giphy.com/media/JsCvFolCJhw18bSycY/giphy.gif)
+
 ## Description
 **FloatWindow** like WeChat's floating ball can open a controller and hide it into a ball.
 

@@ -74,6 +74,7 @@ open class FloatWindow: UIWindow {
             imageView.image = ballImage
         }
     }
+    public var userInfo: [AnyHashable : Any]?
     
     init() {
         super.init(frame: UIScreen.main.bounds)

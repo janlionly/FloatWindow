@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AD1-H5-vqm">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="FloatWindowDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xv4-XX-oLY">
+                                <rect key="frame" x="172.5" y="188" width="69" height="30"/>
+                                <state key="normal" title="Push New"/>
+                                <connections>
+                                    <action selector="pushButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fd1-aO-cnl"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="abY-rj-GmA">
+                                <rect key="frame" x="174.5" y="233" width="65" height="30"/>
+                                <state key="normal" title="Open Old"/>
+                                <connections>
+                                    <action selector="openButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ynZ-ue-sKU"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="abY-rj-GmA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2yc-39-W88"/>
+                            <constraint firstItem="abY-rj-GmA" firstAttribute="top" secondItem="xv4-XX-oLY" secondAttribute="bottom" constant="15" id="6zj-An-9XE"/>
+                            <constraint firstItem="xv4-XX-oLY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="fhL-Pv-yLJ"/>
+                            <constraint firstItem="xv4-XX-oLY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hXd-pQ-tqZ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="1w7-Pb-BkQ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="339.13043478260875" y="81.696428571428569"/>
+        </scene>
+        <!--Test View Controller-->
+        <scene sceneID="dJt-0c-cfF">
+            <objects>
+                <viewController storyboardIdentifier="TestViewController" id="hVC-v3-ENk" customClass="TestViewController" customModule="FloatWindowDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yC1-x8-69v" customClass="UIControl">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="76E-Da-MjM">
+                                <rect key="frame" x="107" y="104" width="200" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="FcL-9U-NVT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FQc-WZ-3Ew">
+                                <rect key="frame" x="107" y="148" width="32" height="30"/>
+                                <state key="normal" title="Hide"/>
+                                <connections>
+                                    <action selector="hideButtonTapped:" destination="hVC-v3-ENk" eventType="touchUpInside" id="AGD-b1-S6M"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qYI-Va-EF4">
+                                <rect key="frame" x="253" y="148" width="54" height="30"/>
+                                <state key="normal" title="Destroy"/>
+                                <connections>
+                                    <action selector="destroyButtonTapped:" destination="hVC-v3-ENk" eventType="touchUpInside" id="Unx-df-BQE"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="qYI-Va-EF4" firstAttribute="trailing" secondItem="76E-Da-MjM" secondAttribute="trailing" id="AQx-x5-GTw"/>
+                            <constraint firstItem="FQc-WZ-3Ew" firstAttribute="top" secondItem="76E-Da-MjM" secondAttribute="bottom" constant="10" id="Spl-LH-EEF"/>
+                            <constraint firstItem="76E-Da-MjM" firstAttribute="centerX" secondItem="yC1-x8-69v" secondAttribute="centerX" id="Uin-Av-xVS"/>
+                            <constraint firstItem="FQc-WZ-3Ew" firstAttribute="leading" secondItem="76E-Da-MjM" secondAttribute="leading" id="imq-tg-wrg"/>
+                            <constraint firstItem="76E-Da-MjM" firstAttribute="top" secondItem="Smg-G9-aib" secondAttribute="top" constant="60" id="pQG-wq-uGI"/>
+                            <constraint firstItem="qYI-Va-EF4" firstAttribute="top" secondItem="76E-Da-MjM" secondAttribute="bottom" constant="10" id="wT6-yK-XG6"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Smg-G9-aib"/>
+                        <connections>
+                            <action selector="backgroundTapped:" destination="hVC-v3-ENk" eventType="touchDown" id="4H5-w5-Fvr"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="field" destination="76E-Da-MjM" id="jlW-Uw-vum"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8PN-Oj-gaF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1105.7971014492755" y="81.696428571428569"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="1lT-oe-b8I">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="AD1-H5-vqm" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1K1-zF-j4h">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="yVg-uN-MWe"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a3a-e2-5aY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-571.01449275362324" y="81.696428571428569"/>
+        </scene>
+    </scenes>
+</document>

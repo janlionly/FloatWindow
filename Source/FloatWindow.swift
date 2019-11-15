@@ -29,7 +29,6 @@ open class FloatWindow: UIWindow {
     }
 
     private var collectView: FloatCollectView!
-    private var imageView: UIImageView!
     var status: FloatWindowStatus = .windowHideen
     
     public var ballView: FloatRoundEntryView!
@@ -66,6 +65,17 @@ open class FloatWindow: UIWindow {
     }
     
     public var isShowPanExitView: Bool = false
+    public var imageView: UIImageView! {
+        willSet {
+            imageView.removeFromSuperview()
+        }
+        didSet {
+            imageView.frame = CGRect(x: 0, y: 0, width: ballWidth, height: ballWidth)
+            imageView.layer.cornerRadius = ballWidth/2
+            imageView.layer.masksToBounds = true
+            ballView.addSubview(imageView)
+        }
+    }
     public var ballImage: UIImage? {
         didSet {
             imageView.frame = CGRect(x: 0, y: 0, width: ballWidth, height: ballWidth)

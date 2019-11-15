@@ -20,6 +20,7 @@ open class FloatWindow: UIWindow {
     private let screenSize = UIScreen.main.bounds.size
     private let collectViewWidth: CGFloat = 150
     private var ballViewMargin: CGFloat = 6
+    private var isHiding: Bool = false
     private var collectionViewOriginalFrame: CGRect {
         return CGRect(x: screenSize.width, y: UIScreen.main.bounds.size.height, width: collectViewWidth, height: collectViewWidth)
     }
@@ -142,6 +143,7 @@ open class FloatWindow: UIWindow {
             return
         }
         isNeedCustomTransition = true
+        isHiding = false
         isHidden = false
         nav?.delegate = self
         nav?.pushViewController(root, animated: true)
@@ -151,6 +153,7 @@ open class FloatWindow: UIWindow {
     
     open func hide() {
         isNeedCustomTransition = true
+        isHiding = true
         isHidden = false
 
         ballView.isHidden = false
@@ -163,6 +166,7 @@ open class FloatWindow: UIWindow {
     
     open func destroy() {
         isNeedCustomTransition = false
+        isHiding = false
         ballView.isHidden = true
         nav?.popToRootViewController(animated: true)
         nav?.delegate = originDelegate
@@ -277,7 +281,7 @@ extension FloatWindow: UINavigationControllerDelegate {
                 isCustomTransition = isNeedCustomTransition
             }
         }else if operation == .pop {
-            if fromVC == FloatWindow.shared.root {
+            if fromVC == FloatWindow.shared.root || isHiding {
                 isCustomTransition = isNeedCustomTransition
                 ballView.isHidden = false
             }

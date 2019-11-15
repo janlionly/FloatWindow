@@ -152,13 +152,13 @@ open class FloatWindow: UIWindow {
         status = .ballViewShowed
         hideCollectView(completion: nil)
         ballView.alpha = 1
-        nav?.popViewController(animated: true)
+        nav?.popToRootViewController(animated: true)
     }
     
     open func destroy() {
         isNeedCustomTransition = false
         ballView.isHidden = true
-        nav?.popViewController(animated: true)
+        nav?.popToRootViewController(animated: true)
         root = nil
         isHidden = true
     }
@@ -264,7 +264,7 @@ open class FloatWindow: UIWindow {
 extension FloatWindow: UINavigationControllerDelegate {
     
     public func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        var isCustomTransition = true
+        var isCustomTransition = false
         if operation == .push {
             if toVC == FloatWindow.shared.root {
                 isCustomTransition = isNeedCustomTransition

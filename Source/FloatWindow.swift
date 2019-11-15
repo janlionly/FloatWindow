@@ -28,6 +28,8 @@ open class FloatWindow: UIWindow {
     }
 
     private var collectView: FloatCollectView!
+    weak private var originDelegate: UINavigationControllerDelegate?
+    
     var status: FloatWindowStatus = .windowHideen
     
     public var ballView: FloatRoundEntryView!
@@ -57,7 +59,10 @@ open class FloatWindow: UIWindow {
         }
     }
     public var root: UIViewController? = nil
-    public weak var nav: UINavigationController? {
+    weak public var nav: UINavigationController? {
+        willSet {
+            originDelegate = nav?.delegate
+        }
         didSet {
             nav?.delegate = self
         }
@@ -138,6 +143,7 @@ open class FloatWindow: UIWindow {
         }
         isNeedCustomTransition = true
         isHidden = false
+        nav?.delegate = self
         nav?.pushViewController(root, animated: true)
         _ = FloatRoundEntryAnimator(operation: .push, sourceCenter: ballView.center)
         ballView.isHidden = true
@@ -152,12 +158,14 @@ open class FloatWindow: UIWindow {
         hideCollectView(completion: nil)
         ballView.alpha = 1
         nav?.popToRootViewController(animated: true)
+        nav?.delegate = originDelegate
     }
     
     open func destroy() {
         isNeedCustomTransition = false
         ballView.isHidden = true
         nav?.popToRootViewController(animated: true)
+        nav?.delegate = originDelegate
         root = nil
         isHidden = true
     }

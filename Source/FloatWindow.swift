@@ -61,7 +61,7 @@ open class FloatWindow: UIWindow {
     public var root: UIViewController? = nil
     weak public var nav: UINavigationController? {
         willSet {
-            originDelegate = nav?.delegate
+            originDelegate = newValue?.delegate
         }
         didSet {
             nav?.delegate = self

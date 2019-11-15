@@ -44,6 +44,16 @@ pod 'FloatWindow'
 
  // or destroy the controller in FloatWindow
  FloatWindow.shared.destroy()
+
+ // other properties
+ FloatWindow.shared.ballView.addSubview(customView) // add custom view into ball you like
+ FloatWindow.shared.nav = currentNav // change nav, push method set this property
+ FloatWindow.shared.imageView = customImageView
+ FloatWindow.shared.userInfo = ["saved": "yourInfo"]
+
+ if FloatWindow.shared.isHideIntoBall {
+     // hide into ball, do something
+ }
 ```
 
 ## Requirements

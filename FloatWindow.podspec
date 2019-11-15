@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'FloatWindow'
-  s.version          = '1.0.4'
+  s.version          = '1.0.5'
   s.summary          = 'FloatWindow like WeChat''s floating ball can open a controller and hide it into a ball.'
  
   s.homepage         = 'https://github.com/janlionly/FloatWindow'

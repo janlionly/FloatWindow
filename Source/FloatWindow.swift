@@ -85,18 +85,19 @@ open class FloatWindow: UIWindow {
         }
     }
     public var userInfo: [AnyHashable : Any]?
+    public var isHideIntoBall: Bool {
+        return ballView.isHidden == false && root != nil
+    }
     
     init() {
         super.init(frame: UIScreen.main.bounds)
 
-        self.windowLevel = UIWindow.Level.statusBar - 1
-        self.isHidden = true
-
-        self.backgroundColor = UIColor.clear
+        windowLevel = UIWindow.Level.statusBar - 1
+        isHidden = true
+        backgroundColor = UIColor.clear
 
         collectView = FloatCollectView(frame: collectionViewOriginalFrame)
-        self.addSubview(collectView)
-        print("ballmargin:\(ballViewMargin)")
+        addSubview(collectView)
         stayPoint = CGPoint(x: screenSize.width - ballViewMargin - ballWidth, y: (screenSize.height - ballWidth)/2.0)
         ballView = FloatRoundEntryView(frame: CGRect(x: stayPoint.x, y: stayPoint.y, width: ballWidth, height: ballWidth))
         ballView.layer.cornerRadius = ballWidth/2
@@ -105,7 +106,7 @@ open class FloatWindow: UIWindow {
         ballView.clickedCallback = {[weak self] in
             self?.show()
         }
-        self.addSubview(ballView)
+        addSubview(ballView)
         
         imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: ballWidth, height: ballWidth))
         imageView.contentMode = .scaleAspectFit
@@ -137,18 +138,19 @@ open class FloatWindow: UIWindow {
             return
         }
         isNeedCustomTransition = true
-        FloatWindow.shared.isHidden = false
-        FloatWindow.shared.nav?.pushViewController(root, animated: true)
-        _ = FloatRoundEntryAnimator(operation: .push, sourceCenter: FloatWindow.shared.ballView.center)
+        isHidden = false
+        nav?.pushViewController(root, animated: true)
+        _ = FloatRoundEntryAnimator(operation: .push, sourceCenter: ballView.center)
+        ballView.isHidden = true
     }
     
     open func hide() {
         isNeedCustomTransition = true
-        self.isHidden = false
+        isHidden = false
 
         ballView.isHidden = false
         status = .ballViewShowed
-        self.hideCollectView(completion: nil)
+        hideCollectView(completion: nil)
         ballView.alpha = 1
         nav?.popViewController(animated: true)
     }
@@ -158,7 +160,7 @@ open class FloatWindow: UIWindow {
         ballView.isHidden = true
         nav?.popViewController(animated: true)
         root = nil
-        FloatWindow.shared.isHidden = true
+        isHidden = true
     }
 
     //MARK: - Gesture
@@ -167,7 +169,7 @@ open class FloatWindow: UIWindow {
         let point = gesture.location(in: self)
         if gesture.state == .began {
             if isShowPanExitView {
-                self.displayCollectView()
+                displayCollectView()
             }
             UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseOut, animations: {
                 self.ballView.center = point
@@ -185,7 +187,7 @@ open class FloatWindow: UIWindow {
         }else if gesture.state == .ended || gesture.state == .cancelled {
             let collectViewPoint = self.convert(point, to: collectView)
             if collectView.point(inside: collectViewPoint, with: nil) == true {
-                self.hideCollectView(completion: nil)
+                hideCollectView(completion: nil)
                 UIView.animate(withDuration: 0.1, delay: 0, options: .curveLinear, animations: {
                     self.ballView.alpha = 0
                 }) { (finished) in
@@ -212,7 +214,7 @@ open class FloatWindow: UIWindow {
                 if frame.origin.y < safeInsets.top {
                     frame.origin.y = safeInsets.top
                 }
-                self.hideCollectView(completion: nil)
+                hideCollectView(completion: nil)
                 UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
                     self.ballView.frame = frame
                 }) { (finished) in

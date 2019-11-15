@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AD1-H5-vqm">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -75,12 +76,21 @@
                                     <action selector="destroyButtonTapped:" destination="hVC-v3-ENk" eventType="touchUpInside" id="Unx-df-BQE"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u8u-FW-BAw">
+                                <rect key="frame" x="189.5" y="254" width="35" height="30"/>
+                                <state key="normal" title="Push"/>
+                                <connections>
+                                    <segue destination="WSu-bP-gQU" kind="show" id="Xen-XM-FyS"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="qYI-Va-EF4" firstAttribute="trailing" secondItem="76E-Da-MjM" secondAttribute="trailing" id="AQx-x5-GTw"/>
+                            <constraint firstItem="u8u-FW-BAw" firstAttribute="centerX" secondItem="yC1-x8-69v" secondAttribute="centerX" id="HNV-i9-fIG"/>
                             <constraint firstItem="FQc-WZ-3Ew" firstAttribute="top" secondItem="76E-Da-MjM" secondAttribute="bottom" constant="10" id="Spl-LH-EEF"/>
                             <constraint firstItem="76E-Da-MjM" firstAttribute="centerX" secondItem="yC1-x8-69v" secondAttribute="centerX" id="Uin-Av-xVS"/>
+                            <constraint firstItem="u8u-FW-BAw" firstAttribute="top" secondItem="76E-Da-MjM" secondAttribute="bottom" constant="116" id="bOL-oG-YdB"/>
                             <constraint firstItem="FQc-WZ-3Ew" firstAttribute="leading" secondItem="76E-Da-MjM" secondAttribute="leading" id="imq-tg-wrg"/>
                             <constraint firstItem="76E-Da-MjM" firstAttribute="top" secondItem="Smg-G9-aib" secondAttribute="top" constant="60" id="pQG-wq-uGI"/>
                             <constraint firstItem="qYI-Va-EF4" firstAttribute="top" secondItem="76E-Da-MjM" secondAttribute="bottom" constant="10" id="wT6-yK-XG6"/>
@@ -115,6 +125,66 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a3a-e2-5aY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-571.01449275362324" y="81.696428571428569"/>
+        </scene>
+        <!--Test View Controller-->
+        <scene sceneID="D55-G5-Vtf">
+            <objects>
+                <viewController id="WSu-bP-gQU" customClass="TestViewController" customModule="FloatWindowDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="r0w-XZ-Sum" customClass="UIControl">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mWQ-s4-8oI">
+                                <rect key="frame" x="107" y="60" width="200" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="Amh-zc-ZFo"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="alphabet"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7IY-aT-1IS">
+                                <rect key="frame" x="107" y="104" width="32" height="30"/>
+                                <state key="normal" title="Hide"/>
+                                <connections>
+                                    <action selector="hideButtonTapped:" destination="WSu-bP-gQU" eventType="touchUpInside" id="c5a-tW-5PL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KWf-w4-idV">
+                                <rect key="frame" x="253" y="104" width="54" height="30"/>
+                                <state key="normal" title="Destroy"/>
+                                <connections>
+                                    <action selector="destroyButtonTapped:" destination="WSu-bP-gQU" eventType="touchUpInside" id="hAM-IG-942"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vsx-wR-Iwo">
+                                <rect key="frame" x="189.5" y="210" width="35" height="30"/>
+                                <state key="normal" title="Push"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="7IY-aT-1IS" firstAttribute="leading" secondItem="mWQ-s4-8oI" secondAttribute="leading" id="02q-aO-kDH"/>
+                            <constraint firstItem="KWf-w4-idV" firstAttribute="top" secondItem="mWQ-s4-8oI" secondAttribute="bottom" constant="10" id="5gB-mm-yp0"/>
+                            <constraint firstItem="KWf-w4-idV" firstAttribute="trailing" secondItem="mWQ-s4-8oI" secondAttribute="trailing" id="Ahc-HM-iBp"/>
+                            <constraint firstItem="vsx-wR-Iwo" firstAttribute="centerX" secondItem="r0w-XZ-Sum" secondAttribute="centerX" id="aXL-ZG-c7u"/>
+                            <constraint firstItem="mWQ-s4-8oI" firstAttribute="top" secondItem="Zek-1u-Ppc" secondAttribute="top" constant="60" id="bx4-AY-yMz"/>
+                            <constraint firstItem="vsx-wR-Iwo" firstAttribute="top" secondItem="mWQ-s4-8oI" secondAttribute="bottom" constant="116" id="deX-S0-NZ5"/>
+                            <constraint firstItem="7IY-aT-1IS" firstAttribute="top" secondItem="mWQ-s4-8oI" secondAttribute="bottom" constant="10" id="oPq-ne-fUT"/>
+                            <constraint firstItem="mWQ-s4-8oI" firstAttribute="centerX" secondItem="r0w-XZ-Sum" secondAttribute="centerX" id="xL9-BD-YGg"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Zek-1u-Ppc"/>
+                        <connections>
+                            <action selector="backgroundTapped:" destination="WSu-bP-gQU" eventType="touchDown" id="8EM-dR-PEM"/>
+                        </connections>
+                    </view>
+                    <navigationItem key="navigationItem" id="YA7-9W-csI"/>
+                    <connections>
+                        <outlet property="field" destination="mWQ-s4-8oI" id="MbL-s0-zPL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H87-Kl-ezG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1833" y="82"/>
         </scene>
     </scenes>
 </document>

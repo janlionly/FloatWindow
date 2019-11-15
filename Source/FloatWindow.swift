@@ -17,7 +17,6 @@ enum FloatWindowStatus {
 open class FloatWindow: UIWindow {
     private var isNeedCustomTransition = false
     private static var _shared: FloatWindow? = nil
-    private var root: UIViewController? = nil
     private let screenSize = UIScreen.main.bounds.size
     private let collectViewWidth: CGFloat = 150
     private var ballViewMargin: CGFloat = 6
@@ -57,7 +56,7 @@ open class FloatWindow: UIWindow {
             _shared = newValue
         }
     }
-    
+    public var root: UIViewController? = nil
     public weak var nav: UINavigationController? {
         didSet {
             nav?.delegate = self
@@ -272,7 +271,7 @@ extension FloatWindow: UINavigationControllerDelegate {
         }else if operation == .pop {
             if fromVC == FloatWindow.shared.root {
                 isCustomTransition = isNeedCustomTransition
-                
+                ballView.isHidden = false
             }
         }
         if isCustomTransition {

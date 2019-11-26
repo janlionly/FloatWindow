@@ -40,7 +40,7 @@ open class FloatWindow: UIWindow {
             ballView.frame = CGRect(x: stayPoint.x, y: stayPoint.y, width: ballWidth, height: ballWidth)
         }
     }
-    public var ballWidth: CGFloat = 80 {
+    public var ballWidth: CGFloat = 54 {
         didSet {
             stayPoint = CGPoint(x: screenSize.width - ballViewMargin - ballWidth, y: stayPoint.y)
             ballView.frame = CGRect(x: stayPoint.x, y: stayPoint.y, width: ballWidth, height: ballWidth)
@@ -131,6 +131,12 @@ open class FloatWindow: UIWindow {
     open func push(root: UIViewController, in nav: UINavigationController?) {
         self.root = root
         self.nav = nav
+        
+        isHidden = false
+        isHiding = false
+        ballView.isHidden = true
+        isNeedCustomTransition = false
+        
         nav?.pushViewController(root, animated: true)
     }
     
@@ -139,21 +145,24 @@ open class FloatWindow: UIWindow {
             print("⚠️You should call push(root:in:) method firstly before call show() method")
             return
         }
-        isNeedCustomTransition = true
-        isHiding = false
+        
         isHidden = false
+        isHiding = false
+        ballView.isHidden = true
+        isNeedCustomTransition = true
+        
         nav?.delegate = self
         nav?.pushViewController(root, animated: true)
         _ = FloatRoundEntryAnimator(operation: .push, sourceCenter: ballView.center)
-        ballView.isHidden = true
+        
     }
     
     open func hide() {
-        isNeedCustomTransition = true
-        isHiding = true
         isHidden = false
-
+        isHiding = true
         ballView.isHidden = false
+        isNeedCustomTransition = true
+        
         status = .ballViewShowed
         hideCollectView(completion: nil)
         ballView.alpha = 1
@@ -165,6 +174,7 @@ open class FloatWindow: UIWindow {
         isNeedCustomTransition = false
         isHiding = false
         ballView.isHidden = true
+        
         nav?.popToRootViewController(animated: true)
         nav?.delegate = originDelegate
         root = nil

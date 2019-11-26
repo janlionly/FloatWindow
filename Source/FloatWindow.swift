@@ -64,9 +64,6 @@ open class FloatWindow: UIWindow {
         willSet {
             originDelegate = newValue?.delegate
         }
-        didSet {
-            nav?.delegate = self
-        }
     }
     
     public var isShowPanExitView: Bool = false

@@ -30,6 +30,13 @@
                                     <action selector="openButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ynZ-ue-sKU"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9CA-TG-VNk">
+                                <rect key="frame" x="189.5" y="287" width="35" height="30"/>
+                                <state key="normal" title="Push"/>
+                                <connections>
+                                    <segue destination="AbE-20-KYg" kind="show" id="Hbh-IT-JM6"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -37,6 +44,8 @@
                             <constraint firstItem="abY-rj-GmA" firstAttribute="top" secondItem="xv4-XX-oLY" secondAttribute="bottom" constant="15" id="6zj-An-9XE"/>
                             <constraint firstItem="xv4-XX-oLY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="fhL-Pv-yLJ"/>
                             <constraint firstItem="xv4-XX-oLY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hXd-pQ-tqZ"/>
+                            <constraint firstItem="9CA-TG-VNk" firstAttribute="top" secondItem="abY-rj-GmA" secondAttribute="bottom" constant="24" id="r8o-WA-e7N"/>
+                            <constraint firstItem="9CA-TG-VNk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vXK-7t-hNx"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -45,6 +54,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="339.13043478260875" y="81.696428571428569"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="o8V-ix-VF0">
+            <objects>
+                <viewController id="AbE-20-KYg" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Fqd-WP-2Vb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="iNm-2p-aZs"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="H8X-sd-7cn"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PDx-rf-M5Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1096" y="819"/>
         </scene>
         <!--Test View Controller-->
         <scene sceneID="dJt-0c-cfF">

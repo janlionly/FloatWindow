@@ -170,6 +170,15 @@ open class FloatWindow: UIWindow {
         nav?.delegate = originDelegate
     }
     
+    open func clear() {
+        isNeedCustomTransition = false
+        isHiding = false
+        ballView.isHidden = true
+        nav?.delegate = originDelegate
+        root = nil
+        isHidden = true
+    }
+    
     open func destroy() {
         isNeedCustomTransition = false
         isHiding = false

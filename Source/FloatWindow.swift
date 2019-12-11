@@ -137,6 +137,7 @@ open class FloatWindow: UIWindow {
         ballView.isHidden = true
         isNeedCustomTransition = false
         
+        nav?.delegate = self
         nav?.pushViewController(root, animated: true)
     }
     
@@ -166,7 +167,7 @@ open class FloatWindow: UIWindow {
         status = .ballViewShowed
         hideCollectView(completion: nil)
         ballView.alpha = 1
-        nav?.popToRootViewController(animated: true)
+        popRoot()
         nav?.delegate = originDelegate
     }
     
@@ -184,10 +185,22 @@ open class FloatWindow: UIWindow {
         isHiding = false
         ballView.isHidden = true
         
-        nav?.popToRootViewController(animated: true)
+        popRoot()
         nav?.delegate = originDelegate
         root = nil
         isHidden = true
+    }
+    
+    private func popRoot() {
+        if let nav = nav, let root = root {
+            if let index = nav.viewControllers.firstIndex(of: root) {
+                if index - 1 >= 0 {
+                    nav.popToViewController(nav.viewControllers[index - 1], animated: true)
+                } else {
+                    nav.popToRootViewController(animated: true)
+                }
+            }
+        }
     }
 
     //MARK: - Gesture
